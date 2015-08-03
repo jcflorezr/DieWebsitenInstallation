@@ -1,0 +1,8 @@
+# configure java
+
+# JDK environment variable
+export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_51
+export PATH=${PATH}:${JAVA_HOME}/bin
+# JRE environment variable
+export JRE_HOME=/usr/lib/jdk1.8.0_51/jre
+export PATH=${PATH}:${JRE_HOME}/bin

@@ -1,0 +1,15 @@
+# Alias for executing tomcat
+tomcatdw() {
+   if [ $# -eq 0 ]; then
+      echo "No arguments supplied. Possible arguments: start, stop, restart."
+   elif [ $1 == "start" ]; then
+      sudo initctl start tomcat
+   elif [ $1 == "stop" ]; then
+      sudo initctl stop tomcat
+   elif [ $1 == "restart" ]; then
+      sudo initctl restart tomcat
+   else
+      echo $1
+      echo "is an invalid argument. Possible arguments: start, stop, restart."
+   fi
+}

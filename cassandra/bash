@@ -1,0 +1,21 @@
+
+
+# Cassandra database environment variable
+export CASSANDRA_HOME=/usr/lib/dsc-cassandra-2.0.14
+export PATH=$PATH:$CASSANDRA_HOME/bin
+# Alias for executing cassandra
+cassandra() {
+   msg = ""
+   if [ $# -eq 0 ]; then
+      echo "No arguments supplied. Possible arguments: start, stop, restart."
+   elif [ $1 == "start" ]; then
+      sudo /etc/init.d/cassandra start
+   elif [ $1 == "stop" ]; then
+      sudo /etc/init.d/cassandra stop
+   elif [ $1 == "restart" ]; then
+      sudo /etc/init.d/cassandra restart
+   else
+      echo $1
+      echo "is an invalid argument. Possible arguments: start, stop, restart."
+   fi
+}
