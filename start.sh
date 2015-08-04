@@ -43,12 +43,12 @@ cat jdk-8u51-linux-x64.gz.part-* | tar xz
 mv jdk1.8.0_51 /usr/lib/jvm/
 
 # Create JAVA_HOME and JRE_HOME environment variables
-cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash/bash.bashrc
+cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash.bashrc
 
 
 
 echo ===============================================================================================
-echo ====================== Install Cassandra database as service on ubuntu ========================
+echo =========================== Install Cassandra database as service =============================
 echo ===============================================================================================
 # REFERENCE --> http://docs.datastax.com/en/cassandra/2.0/cassandra/install/installDeb_t.html
 
@@ -59,8 +59,7 @@ echo "deb http://debian.datastax.com/community stable main" | tee -a /etc/apt/so
 curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 
 # Install the package. For checking the latest version --> http://www.planetcassandra.org/cassandra/
-#apt-get update
-apt-get install dsc20=2.0.14-1 cassandra=2.0.14
+apt-get install dsc20=2.0.11-1 cassandra=2.0.11
 
 # Because the Debian packages start the Cassandra service automatically, you must stop the server and clear the data:
 # Doing this removes the default cluster_name (Test Cluster) from the system table. All nodes must use the same cluster name.
@@ -68,7 +67,7 @@ service cassandra stop
 rm -rf /var/lib/cassandra/data/system/*
 
 # Create CASSANDRA_HOME environment variable and 'cassandra' alias for start and stop cassandra as service
-cat /home/diewebsiten/DieWebsitenInstallation/cassandra/bash >> /etc/bash/bash.bashrc
+cat /home/diewebsiten/DieWebsitenInstallation/cassandra/bash >> /etc/bash.bashrc
 
 
 echo ===============================================================================================
@@ -108,7 +107,7 @@ cp /home/diewebsiten/DieWebsitenInstallation/tomcat/tomcat.conf /etc/init/
 initctl reload-configuration
 
 # Create 'tomcatdw' alias for start and stop Apache Tomcat as service
-cat /home/diewebsiten/DieWebsitenInstallation/tomcat/bash >> /etc/bash/bash.bashrc
+cat /home/diewebsiten/DieWebsitenInstallation/tomcat/bash >> /etc/bash.bashrc
 
 # Tomcat is ready to be run. Start it with this command:
 tomcatdw start
