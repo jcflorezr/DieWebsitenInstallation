@@ -1,20 +1,54 @@
 #!/bin/sh
 
-# ===============================================================================================
-# ================================= Install Java JDK and JRE ====================================
-# ===============================================================================================
+# =============================================================================================== #
+# ================================= Install vsftpd FTP Server =================================== #
+# =============================================================================================== #
+# REFERENCE --> http://www.mclarenx.com/2012/08/10/configurar-vsftpd-y-evitar-los-errores-500-y-530/comment-page-1/
 
-#split gz file
+# Install vsftpd from apt
+sudo apt-get install vsftpd
+
+# Overwrite the 'vsftpd.conf' file with all the neccesary configuration
+cp /home/diewebsiten/DieWebsitenInstallation/ftpserver/vsftpd.conf /etc/vsftpd.conf
+
+# Create the 'vsftpd.chroot_list' adding our 'ftpdw' user
+echo "ftpdw" | sudo tee -a /etc/vsftpd.chroot_list
+
+# Create the 'ftp' group for all ftp users
+sudo groupadd ftp
+
+# Create a ghost shell for 'ftp' users
+sudo mkdir /bin/ftp
+echo "/bin/ftp" | sudo tee -a /etc/shells
+
+# Create the '/home/diewebsiten/ftp' folder for the 'ftpdw' user
+sudo mkdir /home/diewebsiten/ftp
+sudo mkdir /home/diewebsiten/ftp/files
+
+# Create the 'ftpdw' user and give access to the directories created before
+sudo useradd -s /bin/ftp -g ftp -d /home/diewebsiten/ftp ftpdw
+echo ftpdw:ftpdw | chpasswd
+sudo chown ftpdw:ftp -R /home/diewebsiten/ftp/files
+
+
+
+# =============================================================================================== #
+# ================================= Install Java JDK and JRE ==================================== #
+# =============================================================================================== #
+
+# split gz file
 #split -b 40m "/home/diewebsiten/java/jdk/jdk-8u51-linux-x64.gz" "/usr/lib/jvm/jdk-8u51-linux-x64.gz.part-" 
 
-# Create the /usr/lib/jvm directory and uncompress the gz splitted file into it
-mkdir /usr/lib/jvm
+# Create the '/usr/lib/jvm' directory and uncompress the gz splitted file into it
+sudo mkdir /usr/lib/jvm
+cd /usr/lib/jvm
 cat jdk-8u51-linux-x64.gz.part-* | tar xz
 
 
-# ===============================================================================================
-# ====================== Install Cassandra database as service on ubuntu ========================
-# ===============================================================================================
+
+# =============================================================================================== #
+# ====================== Install Cassandra database as service on ubuntu ======================== #
+# =============================================================================================== #
 # REFERENCE --> http://docs.datastax.com/en/cassandra/2.0/cassandra/install/installDeb_t.html
 
 # Add the DataStax Community repository to the /etc/apt/sources.list.d/cassandra.sources.list
@@ -33,18 +67,20 @@ sudo service cassandra stop
 sudo rm -rf /var/lib/cassandra/data/system/*
 
 
-# ===============================================================================================
-# ================================ Install Apache Tomcat 8.0.23 =================================
-# ===============================================================================================
+
+# =============================================================================================== #
+# ================================ Install Apache Tomcat 8.0.23 ================================= #
+# =============================================================================================== #
 # REFERENCE --> https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-14-04
 
 # First, create a new tomcat group:
-sudo groupadd tomcatdw
+sudo groupadd tomcat
 
 # Then create a new tomcat user. We'll make this user a member of the tomcat group, 
 # with a home directory of /opt/tomcatdw (where we will install Tomcat), 
 # and with a shell of /bin/false (so nobody can log into the account):
-sudo useradd -s /bin/false -g tomcatdw -d /opt/tomcat tomcatdw
+sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcatdw
+echo tomcatdw:tomcatdw | chpasswd
 
 # create /opt/tomcat directory
 sudo mkdir /opt/tomcatdw
@@ -70,5 +106,3 @@ sudo initctl reload-configuration
 
 # Tomcat is ready to be run. Start it with this command:
 tomcatdw start
-
-
