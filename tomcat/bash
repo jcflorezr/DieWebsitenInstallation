@@ -1,4 +1,6 @@
 
+# ======== TOMCAT CONFIGURATION ======== #
+
 # ===== Alias for executing tomcat ===== #
 tomcatdw() {
    if [ $# -eq 0 ]; then

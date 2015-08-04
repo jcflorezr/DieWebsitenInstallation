@@ -1,8 +1,10 @@
 
+# ======== CASSANDRA CONFIGURATION ======== #
 
 # Cassandra database environment variable
 export CASSANDRA_HOME=/usr/lib/dsc-cassandra-2.0.14
 export PATH=$PATH:$CASSANDRA_HOME/bin
+
 # Alias for executing cassandra
 cassandra() {
    msg = ""

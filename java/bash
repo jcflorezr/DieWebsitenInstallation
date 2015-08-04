@@ -1,4 +1,7 @@
-# configure java
+
+# ======== DIE WEBSITEN CONFIGURATION ======== #
+
+# ======== JAVA CONFIGURATION ======== #
 
 # JDK environment variable
 export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_51

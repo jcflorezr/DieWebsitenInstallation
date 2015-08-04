@@ -12,14 +12,14 @@ apt-get install vsftpd
 cp /home/diewebsiten/DieWebsitenInstallation/ftpserver/vsftpd.conf /etc/vsftpd.conf
 
 # Create the 'vsftpd.chroot_list' adding our 'ftpdw' user
-echo "ftpdw" | sudo tee -a /etc/vsftpd.chroot_list
+echo "ftpdw" | tee -a /etc/vsftpd.chroot_list
 
 # Create the 'ftp' group for all ftp users
 groupadd ftp
 
 # Create a ghost shell for 'ftp' users
 mkdir /bin/ftp
-echo "/bin/ftp" | sudo tee -a /etc/shells
+echo "/bin/ftp" | tee -a /etc/shells
 
 # Create the '/home/diewebsiten/ftp' folder for the 'ftpdw' user
 mkdir /home/diewebsiten/ftp
@@ -41,8 +41,12 @@ chown ftpdw:ftp -R /home/diewebsiten/ftp/files
 
 # Create the '/usr/lib/jvm' directory and uncompress the gz splitted file into it
 mkdir /usr/lib/jvm
-cd /usr/lib/jvm
+cd /home/diewebsiten/DieWebsitenInstallation/java/jdk
 cat jdk-8u51-linux-x64.gz.part-* | tar xz
+mv -R jdk1.8.0_51 /usr/lib/jvm/
+
+# Create JAVA_HOME and JRE_HOME environment variables
+cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash/bash.bashrc
 
 
 
@@ -66,6 +70,8 @@ apt-get install dsc20=2.0.14-1 cassandra=2.0.14
 service cassandra stop
 rm -rf /var/lib/cassandra/data/system/*
 
+# Create CASSANDRA_HOME environment variable and 'cassandra' alias for start and stop cassandra as service
+cat /home/diewebsiten/DieWebsitenInstallation/cassandra/bash >> /etc/bash/bash.bashrc
 
 
 # =============================================================================================== #
@@ -103,6 +109,9 @@ cp /home/diewebsiten/DieWebsitenInstallation/tomcat/tomcat.conf /etc/init/
 
 # Now let's reload the Upstart configuration, so we can use our new Tomcat script:
 initctl reload-configuration
+
+# Create 'tomcatdw' alias for start and stop Apache Tomcat as service
+cat /home/diewebsiten/DieWebsitenInstallation/tomcat/bash >> /etc/bash/bash.bashrc
 
 # Tomcat is ready to be run. Start it with this command:
 tomcatdw start

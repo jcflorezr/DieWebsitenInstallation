@@ -20,8 +20,8 @@ REFERENCE --> http://serverfault.com/questions/321167/add-correct-host-key-in-kn
 For removing large or troublesome blobs with BFG Repo-Cleaner
 REFERENCE --> https://rtyley.github.io/bfg-repo-cleaner/
 
-1. $ git clone --mirror git://example.com/some-big-repo.git
-2. $ java -jar bfg.jar --strip-biggest-blobs 100 some-big-repo.git
-3. $ cd some-big-repo.git
+1. $ git clone --mirror git://example.com/"some-big-repo.git"
+2. $ java -jar bfg-1.12.3.jar --strip-biggest-blobs 100 "some-big-repo.git"
+3. $ cd "some-big-repo.git"
 4. $ git reflog expire --expire=now --all && git gc --prune=now --aggressive
 5. $ git push
