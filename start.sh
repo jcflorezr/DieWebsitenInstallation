@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# =============================================================================================== #
-# ================================= Install vsftpd FTP Server =================================== #
-# =============================================================================================== #
+echo ===============================================================================================
+echo ================================= Install vsftpd FTP Server ===================================
+echo ===============================================================================================
 # REFERENCE --> http://www.mclarenx.com/2012/08/10/configurar-vsftpd-y-evitar-los-errores-500-y-530/comment-page-1/
 
 # Install vsftpd from apt
@@ -13,9 +13,6 @@ cp /home/diewebsiten/DieWebsitenInstallation/ftpserver/vsftpd.conf /etc/vsftpd.c
 
 # Create the 'vsftpd.chroot_list' adding our 'ftpdw' user
 echo "ftpdw" | tee -a /etc/vsftpd.chroot_list
-
-# Create the 'ftp' group for all ftp users
-groupadd ftp
 
 # Create a ghost shell for 'ftp' users
 mkdir /bin/ftp
@@ -32,9 +29,9 @@ chown ftpdw:ftp -R /home/diewebsiten/ftp/files
 
 
 
-# =============================================================================================== #
-# ================================= Install Java JDK and JRE ==================================== #
-# =============================================================================================== #
+echo ===============================================================================================
+echo ================================= Install Java JDK and JRE ====================================
+echo ===============================================================================================
 
 # split gz file
 #split -b 40m "/home/diewebsiten/java/jdk/jdk-8u51-linux-x64.gz" "/usr/lib/jvm/jdk-8u51-linux-x64.gz.part-" 
@@ -43,16 +40,16 @@ chown ftpdw:ftp -R /home/diewebsiten/ftp/files
 mkdir /usr/lib/jvm
 cd /home/diewebsiten/DieWebsitenInstallation/java/jdk
 cat jdk-8u51-linux-x64.gz.part-* | tar xz
-mv -R jdk1.8.0_51 /usr/lib/jvm/
+mv jdk1.8.0_51 /usr/lib/jvm/
 
 # Create JAVA_HOME and JRE_HOME environment variables
 cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash/bash.bashrc
 
 
 
-# =============================================================================================== #
-# ====================== Install Cassandra database as service on ubuntu ======================== #
-# =============================================================================================== #
+echo ===============================================================================================
+echo ====================== Install Cassandra database as service on ubuntu ========================
+echo ===============================================================================================
 # REFERENCE --> http://docs.datastax.com/en/cassandra/2.0/cassandra/install/installDeb_t.html
 
 # Add the DataStax Community repository to the /etc/apt/sources.list.d/cassandra.sources.list
@@ -62,7 +59,7 @@ echo "deb http://debian.datastax.com/community stable main" | tee -a /etc/apt/so
 curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 
 # Install the package. For checking the latest version --> http://www.planetcassandra.org/cassandra/
-apt-get update
+#apt-get update
 apt-get install dsc20=2.0.14-1 cassandra=2.0.14
 
 # Because the Debian packages start the Cassandra service automatically, you must stop the server and clear the data:
@@ -74,9 +71,9 @@ rm -rf /var/lib/cassandra/data/system/*
 cat /home/diewebsiten/DieWebsitenInstallation/cassandra/bash >> /etc/bash/bash.bashrc
 
 
-# =============================================================================================== #
-# ================================ Install Apache Tomcat 8.0.23 ================================= #
-# =============================================================================================== #
+echo ===============================================================================================
+echo ================================ Install Apache Tomcat 8.0.23 =================================
+echo ===============================================================================================
 # REFERENCE --> https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-14-04
 
 # First, create a new tomcat group:
@@ -85,16 +82,16 @@ groupadd tomcat
 # Then create a new tomcat user. We'll make this user a member of the tomcat group, 
 # with a home directory of /opt/tomcatdw (where we will install Tomcat), 
 # and with a shell of /bin/false (so nobody can log into the account):
-useradd -s /bin/false -g tomcat -d /opt/tomcat tomcatdw
+useradd -s /bin/false -g tomcat -d /opt/tomcatdw tomcatdw
 echo tomcatdw:tomcatdw | chpasswd
 
-# create /opt/tomcat directory
+# create /opt/tomcatdw directory
 mkdir /opt/tomcatdw
 cd /opt/tomcatdw
 
 # Download Apache Tomcat and extract the tar file
 wget http://mirror.sdunix.com/apache/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8.0.23.tar.gz
-tar xvf apache-tomcat-8*tar.gz -C /opt/tomcat --strip-components=1
+tar xvf apache-tomcat-8*tar.gz -C /opt/tomcatdw --strip-components=1
 
 # Give the 'tomcatdw' user write access to the conf directory, and read access to the files in that directory
 chgrp -R tomcatdw conf

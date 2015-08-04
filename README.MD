@@ -1,11 +1,13 @@
 For installing Die Websiten on Ubuntu 14.04 (VPS)
 
-1. $ mkdir /home/diewebsiten/
+1. $ apt-get update
 2. $ apt-get install git
-3. $ git clone https://github.com/juan890202/DieWebsitenInstallation
-4. $ cd /home/diewebsiten/DieWebsitenInstallation/
-5. $ sh start.sh
-5. $ git clone https://github.com/juan890202/DieWebsiten
+3. $ mkdir /home/diewebsiten/
+4. $ cd /home/diewebsiten/
+5. $ git clone https://github.com/juan890202/DieWebsitenInstallation
+6. $ cd /home/diewebsiten/DieWebsitenInstallation/
+7. $ sh start.sh
+8. $ git clone https://github.com/juan890202/DieWebsiten
 
 
 
