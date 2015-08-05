@@ -44,7 +44,7 @@ mv jdk1.8.0_51 /usr/lib/jvm/
 
 # Create JAVA_HOME and JRE_HOME environment variables
 cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash.bashrc
-source ~/.bashrc
+source /etc/bash.bashrc
 
 
 
@@ -70,7 +70,7 @@ rm -rf /var/lib/cassandra/data/system/*
 
 # Create CASSANDRA_HOME environment variable and 'cassandra' alias for start and stop cassandra as service
 cat /home/diewebsiten/DieWebsitenInstallation/cassandra/bash >> /etc/bash.bashrc
-source ~/.bashrc
+source /etc/bash.bashrc
 
 
 echo ===============================================================================================
@@ -111,7 +111,7 @@ initctl reload-configuration
 
 # Create 'tomcatdw' alias for start and stop Apache Tomcat as service
 cat /home/diewebsiten/DieWebsitenInstallation/tomcat/bash >> /etc/bash.bashrc
-source ~/.bashrc
+source /etc/bash.bashrc
 
 # Tomcat is ready to be run. Start it with this command:
 tomcatdw start
