@@ -88,8 +88,7 @@ useradd -s /bin/false -g tomcat -d /opt/tomcatdw tomcatdw
 echo tomcatdw:tomcatdw | chpasswd
 
 # create /opt/tomcatdw directory
-mkdir /opt/tomcatdw
-cd /opt/tomcatdw
+mkdir /opt/tomcatdw && cd $_
 
 # Download Apache Tomcat and extract the tar file
 wget http://mirror.sdunix.com/apache/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8.0.23.tar.gz
