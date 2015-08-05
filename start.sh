@@ -6,7 +6,7 @@ echo ===========================================================================
 # REFERENCE --> http://www.mclarenx.com/2012/08/10/configurar-vsftpd-y-evitar-los-errores-500-y-530/comment-page-1/
 
 # Install vsftpd from apt
-apt-get install vsftpd
+yes | apt-get install vsftpd
 
 # Overwrite the 'vsftpd.conf' file with all the neccesary configuration
 cp /home/diewebsiten/DieWebsitenInstallation/ftpserver/vsftpd.conf /etc/vsftpd.conf
@@ -44,6 +44,7 @@ mv jdk1.8.0_51 /usr/lib/jvm/
 
 # Create JAVA_HOME and JRE_HOME environment variables
 cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash.bashrc
+source ~/.bashrc
 
 
 
@@ -59,7 +60,8 @@ echo "deb http://debian.datastax.com/community stable main" | tee -a /etc/apt/so
 curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 
 # Install the package. For checking the latest version --> http://www.planetcassandra.org/cassandra/
-apt-get install dsc20=2.0.11-1 cassandra=2.0.11
+apt-get update
+y | apt-get install dsc20=2.0.11-1 cassandra=2.0.11
 
 # Because the Debian packages start the Cassandra service automatically, you must stop the server and clear the data:
 # Doing this removes the default cluster_name (Test Cluster) from the system table. All nodes must use the same cluster name.
@@ -68,6 +70,7 @@ rm -rf /var/lib/cassandra/data/system/*
 
 # Create CASSANDRA_HOME environment variable and 'cassandra' alias for start and stop cassandra as service
 cat /home/diewebsiten/DieWebsitenInstallation/cassandra/bash >> /etc/bash.bashrc
+source ~/.bashrc
 
 
 echo ===============================================================================================
@@ -108,6 +111,7 @@ initctl reload-configuration
 
 # Create 'tomcatdw' alias for start and stop Apache Tomcat as service
 cat /home/diewebsiten/DieWebsitenInstallation/tomcat/bash >> /etc/bash.bashrc
+source ~/.bashrc
 
 # Tomcat is ready to be run. Start it with this command:
 tomcatdw start

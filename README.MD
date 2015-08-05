@@ -1,7 +1,7 @@
 For installing Die Websiten on Ubuntu 14.04 (VPS)
 
 1. $ apt-get update
-2. $ apt-get install git
+2. $ apt-get --assume-yes install git
 3. $ mkdir /home/diewebsiten/
 4. $ cd /home/diewebsiten/
 5. $ git clone https://github.com/juan890202/DieWebsitenInstallation
