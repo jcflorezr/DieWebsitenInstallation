@@ -6,7 +6,7 @@ echo ===========================================================================
 # REFERENCE --> http://www.mclarenx.com/2012/08/10/configurar-vsftpd-y-evitar-los-errores-500-y-530/comment-page-1/
 
 # Install vsftpd from apt
-yes | apt-get install vsftpd
+apt-get --assume-yes install vsftpd
 
 # Overwrite the 'vsftpd.conf' file with all the neccesary configuration
 cp /home/diewebsiten/DieWebsitenInstallation/ftpserver/vsftpd.conf /etc/vsftpd.conf
@@ -61,7 +61,7 @@ curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 
 # Install the package. For checking the latest version --> http://www.planetcassandra.org/cassandra/
 apt-get update
-y | apt-get install dsc20=2.0.11-1 cassandra=2.0.11
+apt-get --assume-yes install dsc20=2.0.14-1 cassandra=2.0.14
 
 # Because the Debian packages start the Cassandra service automatically, you must stop the server and clear the data:
 # Doing this removes the default cluster_name (Test Cluster) from the system table. All nodes must use the same cluster name.
