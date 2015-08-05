@@ -96,7 +96,7 @@ wget http://mirror.sdunix.com/apache/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8
 tar xvf apache-tomcat-8*tar.gz -C /opt/tomcatdw --strip-components=1
 
 # Give the 'tomcatdw' user write access to the conf directory, and read access to the files in that directory
-chgrp -R tomcatdw conf
+chgrp -R tomcat conf
 chmod g+rwx conf
 chmod g+r conf/*
 
