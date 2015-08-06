@@ -7,10 +7,16 @@ tomcatdw() {
       echo "No arguments supplied. Possible arguments: start, stop, restart."
    elif [ $1 == "start" ]; then
       initctl start tomcat
+      #cd  /opt/tomcatdw/bin
+      #sh startup.sh
    elif [ $1 == "stop" ]; then
       initctl stop tomcat
+      #cd  /opt/tomcatdw/bin
+      #sh shutdown.sh
    elif [ $1 == "restart" ]; then
       initctl restart tomcat
+      #cd  /opt/tomcatdw/bin
+      #sh startup.sh
    else
       echo $1
       echo "is an invalid argument. Possible arguments: start, stop, restart."

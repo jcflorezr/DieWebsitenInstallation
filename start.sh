@@ -26,6 +26,10 @@ mkdir /home/diewebsiten/ftp/files
 useradd -s /bin/ftp -g ftp -d /home/diewebsiten/ftp ftpdw
 echo ftpdw:ftpdw | chpasswd
 chown ftpdw:ftp -R /home/diewebsiten/ftp/files
+chmod -R +777 /home/diewebsiten/ftp/files
+
+# Restart vsftpd server for updating changes
+service vsftpd restart
 
 
 
@@ -44,7 +48,6 @@ mv jdk1.8.0_51 /usr/lib/jvm/
 
 # Create JAVA_HOME and JRE_HOME environment variables
 cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash.bashrc
-. /etc/bash.bashrc
 
 
 
@@ -70,7 +73,7 @@ rm -rf /var/lib/cassandra/data/system/*
 
 # Create CASSANDRA_HOME environment variable and 'cassandra' alias for start and stop cassandra as service
 cat /home/diewebsiten/DieWebsitenInstallation/cassandra/bash >> /etc/bash.bashrc
-. /etc/bash.bashrc
+
 
 
 echo ===============================================================================================
@@ -110,7 +113,10 @@ initctl reload-configuration
 
 # Create 'tomcatdw' alias for start and stop Apache Tomcat as service
 cat /home/diewebsiten/DieWebsitenInstallation/tomcat/bash >> /etc/bash.bashrc
-. /etc/bash.bashrc
 
-# Tomcat is ready to be run. Start it with this command:
-tomcatdw start
+# Set custom diewbesiten configurations
+cp /home/diewebsiten/DieWebsitenInstallation/tomcat/server.xml /opt/tomcatdw/conf
+cp /home/diewebsiten/DieWebsitenInstallation/tomcat/tomcat-users.xml /opt/tomcatdw/conf
+
+# Open 8084 port for tomcat client connections
+iptables -A INPUT -p tcp --dport 8084 -j ACCEPT

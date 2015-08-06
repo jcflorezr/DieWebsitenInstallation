@@ -7,7 +7,8 @@ For installing Die Websiten on Ubuntu 14.04 (VPS)
 5. $ git clone https://github.com/juan890202/DieWebsitenInstallation
 6. $ cd /home/diewebsiten/DieWebsitenInstallation/
 7. $ bash start.sh
-8. $ git clone https://github.com/juan890202/DieWebsiten
+8. $ . /etc/bash.bashrc
+9. $ git clone https://github.com/juan890202/DieWebsiten
 
 
 
