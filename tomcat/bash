@@ -3,7 +3,7 @@
 
 # CATALINA_HOME environment variable
 export CATALINA_HOME=/opt/tomcatdw
-export PATH=$${PATH}:${CATALINA_HOME}/bin
+export PATH=${PATH}:${CATALINA_HOME}/bin
 
 # ===== Alias for executing tomcat ===== #
 tomcatdw() {
