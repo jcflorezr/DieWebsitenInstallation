@@ -92,11 +92,8 @@ groupadd tomcat
 useradd -s /bin/false -g tomcat -d /opt/tomcatdw tomcatdw
 echo tomcatdw:tomcatdw | chpasswd
 
-# create /opt/tomcatdw directory
-mkdir /opt/tomcatdw && cd $_
-
 # Copy tomcat container folder to specified path (/opt/tomcatdw)
-cp -R /home/diewebsiten/DieWebsitenInstallation/tomcat/opt /
+cp -R /home/diewebsiten/DieWebsitenInstallation/tomcat/opt / && cd /opt/tomcatdw
 
 # Give the 'tomcat' group write access to the conf directory, and read access to the files in that directory
 chgrp -R tomcat conf
