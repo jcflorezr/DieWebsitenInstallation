@@ -95,11 +95,10 @@ echo tomcatdw:tomcatdw | chpasswd
 # create /opt/tomcatdw directory
 mkdir /opt/tomcatdw && cd $_
 
-# Download Apache Tomcat and extract the tar file
-wget http://mirror.sdunix.com/apache/tomcat/tomcat-8/v8.0.23/bin/apache-tomcat-8.0.23.tar.gz
-tar xvf apache-tomcat-8*tar.gz -C /opt/tomcatdw --strip-components=1
+# Copy tomcat container folder to specified path (/opt/tomcatdw)
+cp -R /home/diewebsiten/DieWebsitenInstallation/tomcat/opt /
 
-# Give the 'tomcatdw' user write access to the conf directory, and read access to the files in that directory
+# Give the 'tomcat' group write access to the conf directory, and read access to the files in that directory
 chgrp -R tomcat conf
 chmod g+rwx conf
 chmod g+r conf/*
