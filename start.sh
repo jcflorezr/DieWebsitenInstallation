@@ -116,9 +116,5 @@ initctl reload-configuration
 cat /home/diewebsiten/DieWebsitenInstallation/tomcat/bash >> /etc/bash.bashrc
 . /etc/bash.bashrc
 
-# Set custom diewbesiten configurations
-cp /home/diewebsiten/DieWebsitenInstallation/tomcat/server.xml /opt/tomcatdw/conf
-cp /home/diewebsiten/DieWebsitenInstallation/tomcat/tomcat-users.xml /opt/tomcatdw/conf
-
 # Open 8084 port for tomcat client connections
 iptables -A INPUT -p tcp --dport 8084 -j ACCEPT
