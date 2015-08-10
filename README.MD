@@ -3,10 +3,10 @@ Installing DieWebsiten in UNIX
 1. $ wget https://raw.githubusercontent.com/juan890202/DieWebsitenInstallation/master/init.sh
 
 For installing Die Websiten on Ubuntu 14.04 (VPS)
- $ bash init.sh ubuntu
+$ bash init.sh ubuntu
 
 For installing Die Websiten on Mac OSX 10+
- $ bash init.sh macosx
+$ bash init.sh macosx
 
 
 
