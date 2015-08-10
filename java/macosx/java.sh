@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo ===============================================================================================
-echo ======================================= Ubuntu 14.04 ==========================================
+echo ======================================= Mac OSX 10+ ===========================================
 echo ===============================================================================================
 
 
@@ -11,7 +11,9 @@ java_not_exists_or_too_old=true
 if [ ! -z "$JAVA_HOME" ]; then
 	JAVA_VER=$(java -version 2>&1 | sed 's/java version "\(.*\)\.\(.*\)\..*"/\1\2/; 1q')
 	if [ "$JAVA_VER" -lt 16 ]; then 
-		echo "There is a < 1.6 java version"
+		echo "ERROR: There is a < 1.6 java version, please update your Java Application."
+		echo "EXITING PROCESS"
+		exit 1
 	else 
 		java_not_exists_or_too_old=false
 	fi	
@@ -19,21 +21,11 @@ fi
 
 if [ "$java_not_exists_or_too_old" = true ]; then
 
-	echo =============================== Installing Java JDK and JRE ===================================
-	echo ===============================================================================================
-
-	# split gz file
-	#split -b 40m "/home/diewebsiten/java/jdk/jdk-8u51-linux-x64.gz" "/usr/lib/jvm/jdk-8u51-linux-x64.gz.part-" 
-
-	# Create the '/usr/lib/jvm' directory and uncompress the gz splitted file into it
-	mkdir /usr/lib/jvm
-	cd /home/diewebsiten/DieWebsitenInstallation/java/jdk
-	cat jdk-8u51-linux-x64.gz.part-* | tar xz
-	mv jdk1.8.0_51 /usr/lib/jvm/
-
-	# Create JAVA_HOME and JRE_HOME environment variables
-	cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash.bashrc
-	. /etc/bash.bashrc
+	echo "ERROR: There is no Java Application installed, please refer to the next links:"
+	echo "	https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html"
+	echo "	http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html"
+	echo "EXITING PROCESS"
+	exit 1
 
 else 
 

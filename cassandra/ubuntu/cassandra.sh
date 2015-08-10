@@ -22,6 +22,6 @@ apt-get --assume-yes install dsc20=2.0.14-1 cassandra=2.0.14
 service cassandra stop
 rm -rf /var/lib/cassandra/data/system/*
 
-# Create CASSANDRA_HOME environment variable and 'cassandra' alias for start and stop cassandra as service
+# Create CASSANDRA_HOME environment variable and 'cassandra' alias for starting and stopping cassandra as service
 cat /home/diewebsiten/DieWebsitenInstallation/cassandra/ubuntu/bash >> /etc/bash.bashrc
 . /etc/bash.bashrc

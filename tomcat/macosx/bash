@@ -1,0 +1,20 @@
+
+# ======== TOMCAT CONFIGURATION ======== #
+
+# ===== Alias for executing tomcat ===== #
+tomcatdw() {
+   if [ $# -eq 0 ]; then
+      echo "No arguments supplied. Possible arguments: [start|stop|restart|verify]"
+   elif [ $1 == "start" ]; then
+      launchctl start org.apache.tomcat
+   elif [ $1 == "stop" ]; then
+      launchctl stop org.apache.tomcat
+   elif [ $1 == "restart" ]; then
+      launchctl stop org.apache.tomcat
+   elif [ $1 == "verify" ]; then
+      launchctl list|grep tomcat
+   else
+      echo $1
+      echo "is an invalid argument. Possible arguments: [start|stop|restart|verify]"
+   fi
+}

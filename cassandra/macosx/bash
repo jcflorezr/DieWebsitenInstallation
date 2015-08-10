@@ -1,10 +1,6 @@
 
 # ======== CASSANDRA CONFIGURATION ======== #
 
-# Cassandra environment variable
-export CASSANDRA_HOME=/usr/lib/dsc-cassandra-2.0.14
-export PATH=$PATH:$CASSANDRA_HOME/bin
-
 # Alias for executing cassandra
 cassandra() {
    if [ $# -eq 0 ]; then
@@ -12,11 +8,12 @@ cassandra() {
    elif [ $# -gt 1 ]; then
       echo "Only one argument needed. Possible arguments: [start|stop|restart]."
    elif [ $1 == "start" ]; then
-      /etc/init.d/cassandra start
+      launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
    elif [ $1 == "stop" ]; then
-      /etc/init.d/cassandra stop
+      launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
    elif [ $1 == "restart" ]; then
-      /etc/init.d/cassandra restart
+      launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+      launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
    else
       echo $1
       echo "is an invalid argument. Possible arguments: [start|stop|restart]"
