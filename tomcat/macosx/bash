@@ -5,6 +5,8 @@
 tomcatdw() {
    if [ $# -eq 0 ]; then
       echo "No arguments supplied. Possible arguments: [start|stop|restart|verify]"
+   elif [ $# -gt 1 ]; then
+      echo "Only one argument needed. Possible arguments: [start|stop|restart|verify]."
    elif [ $1 == "start" ]; then
       launchctl start org.apache.tomcat
    elif [ $1 == "stop" ]; then

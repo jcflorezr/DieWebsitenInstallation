@@ -1,14 +1,14 @@
-For installing Die Websiten on Ubuntu 14.04 (VPS)
+Installing DieWebsiten in UNIX
 
-1. $ apt-get update
-2. $ apt-get --assume-yes install curl
-3. $ apt-get --assume-yes install git
-4. $ mkdir /home/diewebsiten/ && cd $_
-5. $ git clone https://github.com/juan890202/DieWebsitenInstallation
-6. $ cd /home/diewebsiten/DieWebsitenInstallation/
-7. $ bash start.sh
-8. $ . /etc/bash.bashrc
-9. $ git clone https://github.com/juan890202/DieWebsiten
+1. $ wget https://raw.githubusercontent.com/juan890202/DieWebsitenInstallation/master/init.sh
+
+For installing Die Websiten on Ubuntu 14.04 (VPS)
+ $ bash init.sh ubuntu
+
+For installing Die Websiten on Mac OSX 10+
+ $ bash init.sh macosx
+
+
 
 
 
