@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 if [ $# -eq 0 ]; then
   	echo "No arguments supplied. Possible arguments: [ubuntu|macosx]."
 elif [ $# -gt 1 ]; then
