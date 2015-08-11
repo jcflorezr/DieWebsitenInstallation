@@ -23,7 +23,7 @@ elif [ $1 == "ubuntu" ] || [ $1 == "macosx" ]; then
 		git clone https://github.com/juan890202/DieWebsitenInstallation
 
 		# Install all the platforms needed by DieWebsiten
-		cd /home/diewebsiten/DieWebsitenInstallation/ && bash start.sh
+		cd /home/diewebsiten/DieWebsitenInstallation/ && bash start.sh $1
 
 		# Refresh /bin/bash
 		. /etc/bash.bashrc
@@ -37,7 +37,7 @@ elif [ $1 == "ubuntu" ] || [ $1 == "macosx" ]; then
 		cd ~ && git clone https://github.com/juan890202/DieWebsitenInstallation
 
 		# Install all the platforms needed by DieWebsiten
-		cd ~/DieWebsitenInstallation/ && bash start.sh
+		cd ~/DieWebsitenInstallation/ && bash start.sh $1
 
 		# Refresh /bin/bash
 		. /etc/bash.bashrc
