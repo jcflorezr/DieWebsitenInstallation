@@ -21,7 +21,7 @@ else
 	sudo mkdir -p /usr/local
 
 	# Copy tomcat folder to specified path
-	sudo cp ~/DieWebsitenInstallation/tomcat/apache-tomcat-8.0.23 /usr/local
+	sudo cp -R ~/DieWebsitenInstallation/tomcat/apache-tomcat-8.0.23 /usr/local
 
 	# To make it easy to replace this release with future releases, we are going to create a symbolic link that we are going to use when referring to Tomcat 
 	# (after removing the old link, you might have from installing a previous version):
@@ -35,7 +35,7 @@ else
 	sudo chmod +x /Library/Tomcat/bin/*.sh
 
 	# Because we want to be able to run Tomcat as a service, we will set up an Upstart script.
-	cp ~/DieWebsitenInstallation/tomcat/macosx/org.apache.tomcat.plist /Library/LaunchDaemons/
+	sudo cp ~/DieWebsitenInstallation/tomcat/macosx/org.apache.tomcat.plist /Library/LaunchDaemons/
 
 	# Create 'tomcatdw' alias for start and stop Apache Tomcat as service
 	cat ~/DieWebsitenInstallation/tomcat/macosx/bash >> ~/.bash_profile
