@@ -10,10 +10,11 @@ elif [ $1 == "ubuntu" ] || [ $1 == "macosx" ]; then
   		/home/diewebsiten/DieWebsitenInstallation/java/$1/java.sh
 		/home/diewebsiten/DieWebsitenInstallation/cassandra/$1/cassandra.sh
 		/home/diewebsiten/DieWebsitenInstallation/tomcat/$1/tomcat.sh
-  	fi
-	~/DieWebsitenInstallation/java/$1/java.sh
-	~/DieWebsitenInstallation/cassandra/$1/cassandra.sh
-	~/DieWebsitenInstallation/tomcat/$1/tomcat.sh
+	else
+		~/DieWebsitenInstallation/java/$1/java.sh
+		~/DieWebsitenInstallation/cassandra/$1/cassandra.sh
+		~/DieWebsitenInstallation/tomcat/$1/tomcat.sh
+  	fi	
 else
   	echo $1
   	echo "is an invalid argument. Possible arguments: [ubuntu|macosx]"

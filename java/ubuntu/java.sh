@@ -32,7 +32,7 @@ if [ "$java_not_exists_or_too_old" = true ]; then
 	mv jdk1.8.0_51 /usr/lib/jvm/
 
 	# Create JAVA_HOME and JRE_HOME environment variables
-	cat /home/diewebsiten/DieWebsitenInstallation/java/bash >> /etc/bash.bashrc
+	cat /home/diewebsiten/DieWebsitenInstallation/java/ubuntu/bash >> /etc/bash.bashrc
 	. /etc/bash.bashrc
 
 else 
