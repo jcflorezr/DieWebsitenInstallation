@@ -2,18 +2,22 @@
 # ======== CASSANDRA CONFIGURATION ======== #
 
 # Alias for executing cassandra
-cassandra() {
+cassandradw() {
    if [ $# -eq 0 ]; then
       echo "No arguments supplied. Possible arguments: [start|stop|restart]"
    elif [ $# -gt 1 ]; then
       echo "Only one argument needed. Possible arguments: [start|stop|restart]."
    elif [ $1 == "start" ]; then
-      launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+      #launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+      cassandra
    elif [ $1 == "stop" ]; then
-      launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+      #launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+      pgrep -u $USER -f cassandra | xargs kill -9
    elif [ $1 == "restart" ]; then
-      launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
-      launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+      #launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+      #launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
+      pgrep -u $USER -f cassandra | xargs kill -9
+      cassandra
    else
       echo $1
       echo "is an invalid argument. Possible arguments: [start|stop|restart]"

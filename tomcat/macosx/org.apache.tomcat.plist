@@ -8,7 +8,7 @@
     <string>org.apache.tomcat</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/opt/local/share/java/tomcat6/bin/catalina.sh</string>
+        <string>/Library/Tomcat/bin/catalina.sh</string>
         <string>run</string>
     </array>
     <key>RunAtLoad</key>
