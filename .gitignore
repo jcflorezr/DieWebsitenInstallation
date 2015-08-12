@@ -15,13 +15,18 @@ classes/
 ################################
 .nbproject/
 
-# Apache Tomcat generated files #
+# Apache Tomcat generated and deployed files #
 ###############################
 tomcat/apache-tomcat-8.0.23/logs/*
 !tomcat/apache-tomcat-8.0.23/logs/RUNNING.txt
 tomcat/apache-tomcat-8.0.23/work/*
 !tomcat/apache-tomcat-8.0.23/work/RUNNING.txt
 tomcat/apache-tomcat-8.0.23/webapps/*
+!tomcat/apache-tomcat-8.0.23/webapps/ROOT
+!tomcat/apache-tomcat-8.0.23/webapps/docs
+!tomcat/apache-tomcat-8.0.23/webapps/examples
+!tomcat/apache-tomcat-8.0.23/webapps/host-manager
+!tomcat/apache-tomcat-8.0.23/webapps/manager
 
 # OS generated files #
 ######################
