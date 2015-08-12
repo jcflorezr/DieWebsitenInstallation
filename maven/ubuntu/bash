@@ -1,0 +1,25 @@
+
+# ======== TOMCAT CONFIGURATION ======== #
+
+# ===== Alias for executing tomcat ===== #
+tomcatdw() {
+   if [ $# -eq 0 ]; then
+      echo "No arguments supplied. Possible arguments: [start|stop|restart]"
+   elif [ $# -gt 1 ]; then
+      echo "Only one argument needed. Possible arguments: [start|stop|restart]."
+   elif [ $1 == "start" ]; then
+      #bash /Library/Tomcat/bin/startup.sh
+      ~/DieWebsitenInstallation/tomcat/apache-tomcat-8.0.23/bin/startup.sh
+   elif [ $1 == "stop" ]; then
+      #bash /Library/Tomcat/bin/shutdown.sh
+      ~/DieWebsitenInstallation/tomcat/apache-tomcat-8.0.23/bin/shutdown.sh
+   elif [ $1 == "restart" ]; then
+      #bash /Library/Tomcat/bin/shutdown.sh
+      #bash /Library/Tomcat/bin/startup.sh
+      ~/DieWebsitenInstallation/tomcat/apache-tomcat-8.0.23/bin/shutdown.sh
+      ~/DieWebsitenInstallation/tomcat/apache-tomcat-8.0.23/bin/startup.sh
+   else
+      echo $1
+      echo "is an invalid argument. Possible arguments: [start|stop|restart]"
+   fi
+}

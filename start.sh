@@ -10,10 +10,12 @@ elif [ $1 == "ubuntu" ] || [ $1 == "macosx" ]; then
   		/home/diewebsiten/DieWebsitenInstallation/java/$1/java.sh
 		/home/diewebsiten/DieWebsitenInstallation/cassandra/$1/cassandra.sh
 		/home/diewebsiten/DieWebsitenInstallation/tomcat/$1/tomcat.sh
+		/home/diewebsiten/DieWebsitenInstallation/maven/$1/maven.sh
 	else
 		~/DieWebsitenInstallation/java/$1/java.sh
 		~/DieWebsitenInstallation/cassandra/$1/cassandra.sh
 		~/DieWebsitenInstallation/tomcat/$1/tomcat.sh
+		~/DieWebsitenInstallation/maven/$1/maven.sh
   	fi	
 else
   	echo $1
