@@ -6,6 +6,7 @@ tomcat/apache-tomcat-8.0.23/logs/*
 !tomcat/apache-tomcat-8.0.23/logs/RUNNING.txt
 tomcat/apache-tomcat-8.0.23/work/*
 !tomcat/apache-tomcat-8.0.23/work/RUNNING.txt
+tomcat/apache-tomcat-8.0.23/webapps/*
 
 # OS generated files #
 ######################
