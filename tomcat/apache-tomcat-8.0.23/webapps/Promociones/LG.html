@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(getLocation);
+		
+		function getLocation() {
+		    if (navigator.geolocation) {
+		        navigator.geolocation.getCurrentPosition(showPosition);
+		    } else { 
+		        alert("Intenta ver nuestras promociones desde otro dispositivo.");
+		    }
+		}
+		
+		function showPosition(position) {
+			alert("Latitud: "+ position.coords.latitude);
+			alert("longitude: "+ position.coords.longitude);
+			$.ajax({
+				url : "LG?latitud=" + position.coords.latitude + "&longitud=" + position.coords.longitude,
+				success: function(resp) {
+					alert("bien");
+				}
+			});	
+		}
+	</script>
+</head>
+<body>
+
+
+</body>
+</html>
