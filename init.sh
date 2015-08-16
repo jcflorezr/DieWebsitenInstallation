@@ -40,7 +40,7 @@ elif [ $1 == "ubuntu" ] || [ $1 == "macosx" ]; then
 		cd ~/DieWebsitenInstallation/ && bash start.sh $1
 
 		# Refresh /bin/bash
-		. /etc/bash.bashrc
+		. ~/.bash_profile
 
 		# Download DieWebsiten repository
 		# cd ~ && git clone https://github.com/juan890202/DieWebsiten
