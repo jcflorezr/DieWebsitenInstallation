@@ -25,7 +25,7 @@ chmod g+rwx conf
 chmod g+r conf/*
 
 # Make the 'tomcatdw' user the owner of the work, temp, and logs directories:
-chown -R tomcatdw work/ temp/ logs/
+chown -R tomcatdw work/ temp/ logs/ webapps/
 
 # Because we want to be able to run Tomcat as a service, we will set up an Upstart script.
 cp /home/diewebsiten/DieWebsitenInstallation/tomcat/ubuntu/tomcat.conf /etc/init/
