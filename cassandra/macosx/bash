@@ -9,7 +9,8 @@ cassandradw() {
       echo "Only one argument needed. Possible arguments: [start|stop|restart]."
    elif [ $1 == "start" ]; then
       #launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
-      cassandra
+      #cassandra
+      sh ~/DieWebsitenInstallation/cassandra/apache-cassandra-3.0.9/bin/cassandra
    elif [ $1 == "stop" ]; then
       #launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
       pgrep -u $USER -f cassandra | xargs kill -9
@@ -17,7 +18,8 @@ cassandradw() {
       #launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
       #launchctl load ~/Library/LaunchAgents/homebrew.mxcl.cassandra.plist
       pgrep -u $USER -f cassandra | xargs kill -9
-      cassandra
+      #cassandra
+      sh ~/DieWebsitenInstallation/cassandra/apache-cassandra-3.0.9/bin/cassandra
    else
       echo $1
       echo "is an invalid argument. Possible arguments: [start|stop|restart]"
